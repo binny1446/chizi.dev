@@ -12,13 +12,15 @@ export async function getStaticPaths() {
     query: `*[_type == "snippet"]`,
   });
 
-  return snippets.map(({ slug }) => {
-    return {
-      params: {
-        slug: slug.current,
-      },
-    };
-  });
+  return (snippets || [])
+    .filter((snippet) => snippet?.slug?.current)
+    .map(({ slug }) => {
+      return {
+        params: {
+          slug: slug.current,
+        },
+      };
+    });
 }
 
 const { params } = Astro;
