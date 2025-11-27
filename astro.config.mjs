@@ -17,11 +17,14 @@ export default defineConfig({
     react(),
     svelte(),
     sanity({
-      projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
-      dataset: import.meta.env.PUBLIC_SANITY_DATASET,
+      projectId: "fv4ogx5c",
+      dataset: "production",
       useCdn: false,
       apiVersion: "2025-01-28",
       studioBasePath: "/studio",
+      stega: {
+        studioUrl: "/studio",
+      },
     }),
   ],
 
