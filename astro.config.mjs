@@ -9,6 +9,8 @@ import svelte from "@astrojs/svelte";
 import sanity from "@sanity/astro";
 import tailwindcss from "@tailwindcss/vite";
 
+import { fileURLToPath } from "node:url";
+
 const env = loadEnv(process.env.NODE_ENV || "development", process.cwd(), "");
 
 // https://astro.build/config
@@ -16,8 +18,13 @@ export default defineConfig({
   site: `https://${process.env.SITE_DOMAIN}`,
   prefetch: { prefetchAll: true },
 
-import { fileURLToPath } from "node:url";
-
+  vite: {
+    resolve: {
+      alias: {
+        "@/": fileURLToPath(new URL("./src/", import.meta.url)),
+      },
+    },
+  },
 
   integrations: [
     react(),
