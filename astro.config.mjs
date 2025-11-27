@@ -1,15 +1,12 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-
 import { loadEnv } from "vite";
+import { fileURLToPath } from "node:url";
 
 import node from "@astrojs/node";
 import react from "@astrojs/react";
 import svelte from "@astrojs/svelte";
 import sanity from "@sanity/astro";
-import tailwindcss from "@tailwindcss/vite";
-
-import { fileURLToPath } from "node:url";
 
 const env = loadEnv(process.env.NODE_ENV || "development", process.cwd(), "");
 
