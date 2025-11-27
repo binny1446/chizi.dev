@@ -16,9 +16,8 @@ export default defineConfig({
   site: `https://${process.env.SITE_DOMAIN}`,
   prefetch: { prefetchAll: true },
 
-  vite: {
-    plugins: [tailwindcss()],
-  },
+import { fileURLToPath } from "node:url";
+
 
   integrations: [
     react(),
