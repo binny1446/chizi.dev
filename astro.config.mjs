@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-
 import { loadEnv } from "vite";
+import { fileURLToPath } from "node:url";
 
 import node from "@astrojs/node";
 import react from "@astrojs/react";
@@ -15,9 +15,6 @@ const env = loadEnv(process.env.NODE_ENV || "development", process.cwd(), "");
 export default defineConfig({
   site: `https://${process.env.SITE_DOMAIN}`,
   prefetch: { prefetchAll: true },
-
-import { fileURLToPath } from "node:url";
-
 
   integrations: [
     react(),
