@@ -7,7 +7,6 @@ import { projectType } from "./project";
 import { snippetType } from "./snippet";
 import { tagType } from "./tag";
 
-import { siteSettings } from "./siteSettings";
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, projectType, postType, categoryType, tagType, snippetType, siteSettings],
+  types: [blockContentType, projectType, postType, categoryType, tagType, snippetType],
 };

@@ -28,38 +28,40 @@ const workexperience = [
 <MainLayout>
   <section class="">
     <div>
-      <Heading variant="h3">Akash Singh</Heading>
-      <Paragraph className="text-muted-foreground leading-none">Applied AI Researcher</Paragraph>
+      <Heading variant="h3">Chizi Victor</Heading>
+      <Paragraph className="text-muted-foreground leading-none">Software developer</Paragraph>
     </div>
 
     <Paragraph>
-      Hi, I'm Akash — a physics graduate from IIT BHU, passionate about AI research aimed at understanding and creating intelligence.
+      Hi, I'm Chizi — a software developer and design engineer based in Port Harcourt, Nigeria.
       <br /><br />
-      My work explores how intelligent systems can model complex patters, reason, and learn, with applications in neuroscience and heathcare diagnostics. By combining fundamental AI research with insights from brain, i strive to develop models that not only advance machine intelligence but also enhance our understanding of human cognition and improve diagnostic tools in heathcare.
+      I solve unique business problems for startups and business owners in finance and commerce. My projects
+      are often focused on design systems, accessibility, typography, and animations.
       <br /><br />
-      I'm seeking opportunities to advance AI research focused on understanding intelligence, bridging neuroscience insights with machine learning, and developing AI-driven tools for diagnostics and cognitive modeling. If that sounds interesting, <Contact client:load>let's connect!</Contact>
+      Currently, I work with founders and business owners looking to build and scale their ideas with
+      software solutions. If that sounds like you, <Contact client:load>let's connect!</Contact>
     </Paragraph>
   </section>
 
-  <div></div>
+  <section class="space-y-4">
+    <hr />
+    <Heading variant="h4" id="work-experience">Work experience</Heading>
 
-  <section>
-    <Heading variant="h4">Experience</Heading>
-
-    <div class="space-y-6">
+    <div class="space-y-12">
       {
-        workexperience.map((exp) => (
-          <div class="flex flex-col justify-between gap-2 sm:flex-row-reverse sm:gap-4">
-            <Paragraph className="text-sm sm:text-muted-foreground text-muted-foreground/70">
-              {exp.date.start} - {exp.date.end}
-            </Paragraph>
-
+        workexperience.map(({ role, company, location, date }) => (
+          <div class="grid grid-cols-[1fr_auto] items-start gap-3">
             <div>
-              <Paragraph>{exp.role}</Paragraph>
-              <Paragraph className="text-muted-foreground">
-                {exp.company} - {exp.location}
+              <Heading variant="h5" className="leading-none">
+                {role}
+              </Heading>
+              <Paragraph className="text-muted-foreground leading-none">
+                {company}, {location}
               </Paragraph>
             </div>
+            <Paragraph className="text-sm text-muted-foreground">
+              {date.start} - {date.end}
+            </Paragraph>
           </div>
         ))
       }

@@ -1,40 +1,27 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-import { loadEnv } from "vite";
-import { fileURLToPath } from "node:url";
 
 import node from "@astrojs/node";
 import react from "@astrojs/react";
 import svelte from "@astrojs/svelte";
 import sanity from "@sanity/astro";
-
-const env = loadEnv(process.env.NODE_ENV || "development", process.cwd(), "");
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: `https://${process.env.SITE_DOMAIN}`,
-  prefetch: { prefetchAll: true },
-
   vite: {
-    resolve: {
-      alias: {
-        "@/": fileURLToPath(new URL("./src/", import.meta.url)),
-      },
-    },
+    plugins: [tailwindcss()],
   },
 
   integrations: [
     react(),
     svelte(),
     sanity({
-      projectId: env.PUBLIC_SANITY_PROJECT_ID,
-      dataset: env.PUBLIC_SANITY_DATASET,
+      projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
+      dataset: import.meta.env.PUBLIC_SANITY_DATASET,
       useCdn: false,
       apiVersion: "2025-01-28",
       studioBasePath: "/studio",
-      stega: {
-        studioUrl: "/studio",
-      },
     }),
   ],
 
