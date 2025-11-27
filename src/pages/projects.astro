@@ -23,8 +23,7 @@ const projects = projectsData || [];
 
         <div class="space-y-1 lg:flex-2">
           {project.images?.map((image: SanityDocument) => (
-            <Image inferSize src={urlForImage(image).url()} alt={image.alt} class="rounded-md" />
-          ))}
+                          <Image inferSize src={urlForImage(image).url()} alt={image.alt || project.title || "Project image"} class="rounded-md" />          ))}
         </div>
       </div>
     ))
