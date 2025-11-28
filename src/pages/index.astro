@@ -49,25 +49,25 @@ const workexperience = [
     </Paragraph>
   </section>
 
-  <section class="space-y-4">
-    <hr />
-    <Heading variant="h4" id="work-experience">Work experience</Heading>
+  <div></div>
 
-    <div class="space-y-12">
+  <section>
+    <Heading variant="h4">Experience</Heading>
+
+    <div class="space-y-6">
       {
-        workexperience.map(({ role, company, location, date }) => (
-          <div class="grid grid-cols-[1fr_auto] items-start gap-3">
+        workexperience.map((exp) => (
+          <div class="flex flex-col justify-between gap-2 sm:flex-row-reverse sm:gap-4">
+            <Paragraph className="text-sm sm:text-muted-foreground text-muted-foreground/70">
+              {exp.date.start} - {exp.date.end}
+            </Paragraph>
+
             <div>
-              <Heading variant="h5" className="leading-none">
-                {role}
-              </Heading>
-              <Paragraph className="text-muted-foreground leading-none">
-                {company}, {location}
+              <Paragraph>{exp.role}</Paragraph>
+              <Paragraph className="text-muted-foreground">
+                {exp.company} - {exp.location}
               </Paragraph>
             </div>
-            <Paragraph className="text-sm text-muted-foreground">
-              {date.start} - {date.end}
-            </Paragraph>
           </div>
         ))
       }
