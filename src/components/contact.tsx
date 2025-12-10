@@ -15,8 +15,8 @@ export function Contact({ children }: { children: React.ReactNode }) {
       <PopoverContent collisionPadding={16} className="space-y-8 text-sm">
         <div className="flex flex-col gap-1">
           <Heading variant="h4">Email</Heading>
-          <a target="_blank" href="mailto:chiziwokoma@gmail.com" className="link">
-            chiziwokoma@gmail.com
+          <a target="_blank" href="mailto:akash.singh@indraastra.in" className="link">
+            akash.singh@indraastra.in
           </a>
         </div>
 
