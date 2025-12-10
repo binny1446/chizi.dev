@@ -3,7 +3,6 @@ import { Heading } from "@/components/ui/text";
 import { siteConfig } from "@/lib/config";
 
 const socialLinks = [
-  { title: "X (Twitter)", href: siteConfig.links.twitter },
   { title: "LinkedIn", href: siteConfig.links.linkedIn },
   { title: "Github", href: siteConfig.links.github },
 ];
