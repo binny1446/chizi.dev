@@ -6,8 +6,10 @@
     date = new Date();
   }, 1000);
 
-  const hr = $derived(date.getUTCHours() + 5);
-  const min = $derived(date.getUTCMinutes() + 30);
+  const totalMinutes = $derived(date.getUTCMinutes() + 30);
+  const extraHours = $derived(Math.floor(totalMinutes / 60));
+  const min = $derived(totalMinutes % 60);
+  const hr = $derived((date.getUTCHours() + 5 + extraHours) % 24);
   const sec = $derived(date.getUTCSeconds());
 </script>
 
