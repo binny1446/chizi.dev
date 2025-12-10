@@ -6,14 +6,14 @@
     date = new Date();
   }, 1000);
 
-  const hr = $derived(date.getUTCHours() + 5.5);
-  const min = $derived(date.getUTCMinutes());
+  const hr = $derived(date.getUTCHours() + 5);
+  const min = $derived(date.getUTCMinutes() + 30);
   const sec = $derived(date.getUTCSeconds());
 </script>
 
 <div class="flex items-center gap-4">
   <p class="text-muted-foreground/70 shrink-0 text-xs">
-    (UTC +1)&nbsp;
+    (UTC +5:30)&nbsp;
     <span class="font-mono">{pad(hr)}:{pad(min)}:{pad(sec)}</span>
     {#if hr < 12}
       AM
