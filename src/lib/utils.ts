@@ -6,5 +6,5 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const formatDate = (date: Date | number) => {
-  return new Intl.DateTimeFormat("en-US", { dateStyle: "medium" }).format(new Date(date));
+  return new Intl.DateTimeFormat("en-IN", { dateStyle: "medium" }).format(new Date(date));
 };
