@@ -6,29 +6,14 @@
     date = new Date();
   }, 1000);
 
-  // Convert UTC → IST (UTC +5:30)
-  const ist = $derived(() => {
-    const utcH = date.getUTCHours();
-    const utcM = date.getUTCMinutes();
-    const utcS = date.getUTCSeconds();
-
-    let totalMinutes = utcH * 60 + utcM + 330; // 5*60 + 30 = 330
-    totalMinutes = totalMinutes % (24 * 60);
-
-    const h = Math.floor(totalMinutes / 60);
-    const m = totalMinutes % 60;
-
-    return { h, m, s: utcS };
-  });
-
-  const hr = $derived(ist.h);
-  const min = $derived(ist.m);
-  const sec = $derived(ist.s);
+  const hr = $derived(date.getUTCHours() + 5.5);
+  const min = $derived(date.getUTCMinutes());
+  const sec = $derived(date.getUTCSeconds());
 </script>
 
 <div class="flex items-center gap-4">
   <p class="text-muted-foreground/70 shrink-0 text-xs">
-    (IST)&nbsp;
+    (UTC +1)&nbsp;
     <span class="font-mono">{pad(hr)}:{pad(min)}:{pad(sec)}</span>
     {#if hr < 12}
       AM
