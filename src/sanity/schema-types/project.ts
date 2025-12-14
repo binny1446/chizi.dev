@@ -10,8 +10,8 @@ export const projectType = defineType({
       type: "string",
     }),
     defineField({
-      name: "description",
-      type: "text",
+      name: "body",
+      type: "blockContent",
     }),
     defineField({
       name: "images",
