@@ -1,14 +1,16 @@
 ---
-import { Heading, Paragraph } from "@/components/ui/text";
+import { Heading } from "@/components/ui/text";
 import MainLayout from "@/layouts/main.astro";
 import { loadQuery } from "@/sanity/lib/load-query";
 import { urlForImage } from "@/sanity/lib/url-for-image";
+import PortableText from "@/components/portable-text.astro";
 import type { SanityDocument } from "@sanity/client";
 import { Image } from "astro:assets";
 
 const { data: projectsData } = await loadQuery<SanityDocument[]>({
   query: `*[_type == "project"] | order(publishedAt desc)`,
 });
+
 const projects = projectsData || [];
 ---
 
@@ -16,14 +18,23 @@ const projects = projectsData || [];
   {
     projects.map((project) => (
       <div class="relative flex flex-col gap-6 lg:flex-row">
-        <div class="top-20 h-fit lg:sticky lg:flex-2">
+        <div class="top-20 h-fit lg:sticky lg:flex-2 space-y-3">
           <Heading variant="h4">{project.title}</Heading>
-          <Paragraph className="text-muted-foreground">{project.body}</Paragraph>
+
+          <div class="editor text-muted-foreground">
+            <PortableText portableText={project.body} />
+          </div>
         </div>
 
         <div class="space-y-1 lg:flex-1">
           {project.images?.map((image: SanityDocument) => (
-                          <Image inferSize src={urlForImage(image).url()} alt={image.alt || project.title || "Project image"} class="rounded-md" />          ))}
+            <Image
+              inferSize
+              src={urlForImage(image).url()}
+              alt={image.alt || project.title || "Project image"}
+              class="rounded-md"
+            />
+          ))}
         </div>
       </div>
     ))
