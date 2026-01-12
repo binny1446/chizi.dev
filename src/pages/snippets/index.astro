@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 const { data: snippets } = await loadQuery<SanityDocument[]>({
   query: `
     *[_type == "snippet"] | order(publishedAt desc) | {
-      description,
+      body,
       "slug": slug.current, 
       "tags": tags[]->title,
       publishedAt
@@ -29,7 +29,7 @@ const { data: snippets } = await loadQuery<SanityDocument[]>({
       <div class="flex flex-col-reverse items-start justify-between gap-2 sm:flex-row">
         <div class="">
           <a href={`/snippets/${snippet.slug}`} class="w-fit">
-            <Paragraph>{snippet.body}</Paragraph>
+            <Paragraph>{snippet.description}</Paragraph>
           </a>
           <Paragraph className="text-sm text-muted-foreground">
             {formatDate(snippet.publishedAt)}
