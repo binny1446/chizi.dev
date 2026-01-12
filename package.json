@@ -15,6 +15,7 @@
     "@astrojs/node": "^9.2.2",
     "@astrojs/react": "^4.3.0",
     "@astrojs/svelte": "^7.1.0",
+    "@astrojs/vercel": "^9.0.3",
     "@fontsource/ibm-plex-mono": "^5.2.5",
     "@fontsource/uncut-sans": "^5.2.5",
     "@radix-ui/react-popover": "^1.1.14",

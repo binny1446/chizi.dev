@@ -7,6 +7,8 @@ import svelte from "@astrojs/svelte";
 import sanity from "@sanity/astro";
 import tailwindcss from "@tailwindcss/vite";
 
+import vercel from "@astrojs/vercel";
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -28,7 +30,5 @@ export default defineConfig({
     }),
   ],
 
-  adapter: node({
-    mode: "standalone",
-  }),
+  adapter: vercel(),
 });
