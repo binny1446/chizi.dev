@@ -1,16 +1,17 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-
-import node from "@astrojs/node";
 import react from "@astrojs/react";
 import svelte from "@astrojs/svelte";
 import sanity from "@sanity/astro";
 import tailwindcss from "@tailwindcss/vite";
-
-import vercel from "@astrojs/vercel";
+// Use the serverless-specific import for Vercel
+import vercel from "@astrojs/vercel/serverless"; 
 
 // https://astro.build/config
 export default defineConfig({
+  // IMPORTANT: Set output to 'server' to enable SSR on Vercel
+  output: 'server', 
+  
   vite: {
     plugins: [tailwindcss()],
   },
