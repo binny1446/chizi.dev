@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 const { data: snippets } = await loadQuery<SanityDocument[]>({
   query: `
     *[_type == "snippet"] | order(publishedAt desc) | {
-      body,
+      description,
       "slug": slug.current, 
       "tags": tags[]->title,
       publishedAt
