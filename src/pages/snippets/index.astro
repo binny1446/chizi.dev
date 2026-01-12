@@ -9,7 +9,8 @@ import { Badge } from "@/components/ui/badge";
 const { data: snippets } = await loadQuery<SanityDocument[]>({
   query: `
     *[_type == "snippet"] | order(publishedAt desc) | {
-      body,
+      title,
+      description,
       "slug": slug.current, 
       "tags": tags[]->title,
       publishedAt
@@ -23,23 +24,20 @@ const { data: snippets } = await loadQuery<SanityDocument[]>({
     <Heading>Snippets</Heading>
     <Paragraph>Bunch of stuff I keep I keep forgetting no matter how much I use them.</Paragraph>
   </div>
-
   {
     snippets.map((snippet) => (
       <div class="flex flex-col-reverse items-start justify-between gap-2 sm:flex-row">
         <div class="">
-          <a href={`/snippets/${snippet.slug}`} class="w-fit">
-            <Paragraph>{snippet.body}</Paragraph>
+          <a href=`/snippets/${snippet.slug}`} class="w-fit">
+            <Paragraph>{snippet.title}</Paragraph>
           </a>
           <Paragraph className="text-sm text-muted-foreground">
             {formatDate(snippet.publishedAt)}
           </Paragraph>
         </div>
-
         <div class="hidden h-6 grow items-center sm:flex">
           <span class="bg-border/40 h-px w-full" />
         </div>
-
         {!!snippet.tags?.length && (
           <div class="mt-0.5 flex h-fit items-start gap-0.5">
             {snippet.tags.map((tag: string) => (
