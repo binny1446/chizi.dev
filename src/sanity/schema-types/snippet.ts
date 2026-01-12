@@ -37,7 +37,7 @@ export const snippetType = defineType({
   preview: {
     select: {
       title: "title",
-      subtitle: "description",
+      subtitle: "body",
     },
   },
 });
